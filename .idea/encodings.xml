@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" addBOMForNewFiles="with NO BOM" />
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/../jinput-master" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jinput-master/applet" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jinput-master/coreAPI" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jinput-master/examples" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jinput-master/plugins" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jinput-master/plugins/awt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jinput-master/plugins/windows" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jinput-master/plugins/wintab" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jinput-master/tests" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jinput-master/uberjar" charset="UTF-8" />
+  </component>
 </project>

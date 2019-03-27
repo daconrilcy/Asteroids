@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="applet" target="8" />
+      <module name="awt-plugin" target="8" />
+      <module name="coreapi" target="8" />
+      <module name="examples" target="8" />
+      <module name="jinput" target="8" />
+      <module name="jinput-parent" target="8" />
+      <module name="plugins" target="8" />
+      <module name="tests" target="8" />
+      <module name="windows-plugin" target="8" />
+      <module name="wintab-plugin" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="applet" options="-Werror -Xlint:all,-options -h D:\Java\jinput-master\applet\target/generated-sources/natives" />
+      <module name="awt-plugin" options="-Werror -Xlint:all,-options -h D:\Java\jinput-master\plugins\awt\target/generated-sources/natives" />
+      <module name="coreapi" options="-Werror -Xlint:all,-options -h D:\Java\jinput-master\coreAPI\target/generated-sources/natives" />
+      <module name="examples" options="-Werror -Xlint:all,-options -h D:\Java\jinput-master\examples\target/generated-sources/natives" />
+      <module name="jinput" options="-Werror -Xlint:all,-options -h D:\Java\jinput-master\uberjar\target/generated-sources/natives" />
+      <module name="tests" options="-Werror -Xlint:all,-options -h D:\Java\jinput-master\tests\target/generated-sources/natives" />
+      <module name="windows-plugin" options="-Werror -Xlint:all,-options -h D:\Java\jinput-master\plugins\windows\target/generated-sources/natives" />
+      <module name="wintab-plugin" options="-Werror -Xlint:all,-options -h D:\Java\jinput-master\plugins\wintab\target/generated-sources/natives" />
+    </option>
+  </component>
+</project>
