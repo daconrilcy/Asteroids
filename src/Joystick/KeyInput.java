@@ -1,3 +1,5 @@
+package Joystick;
+
 import objects.GameObject;
 import objects.Handler;
 import objects.ID;

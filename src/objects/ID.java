@@ -3,9 +3,10 @@ package objects;
 public enum  ID {
 
     Player(),
-    Zombie(),
+    Competitor(),
     Block(),
-    Bullet();
+    Bullet(),
+    ball();
 
 
 }

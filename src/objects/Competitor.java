@@ -1,12 +1,12 @@
 package objects;
 
-
 import principal.Game;
 
 import java.awt.*;
-public class Player extends GameObject {
 
-    public Player(float x, float y, ID id) {
+public class Competitor extends GameObject {
+
+    public Competitor(float x, float y, ID id) {
         super(x, y, id);
         velX = 0;
         velY = 0;

@@ -17,7 +17,7 @@ public class Board extends JFrame {
         this.setMinimumSize(dimension);
         this.setMaximumSize(dimension);
         this.setResizable(false);
-        this.setTitle("Asteroids Game");
+        this.setTitle("Asteroids principal.Game");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GameDrawingPanel gamePanel = new GameDrawingPanel();
         this.setBackground(Color.BLACK);

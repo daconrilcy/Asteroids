@@ -1,9 +1,16 @@
+package principal;
+
+import principal.Game;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Window {
 
+    Game game;
+
     public Window(int width , int height , String title , Game game){
+        this.game = game;
 
         JFrame frame = new JFrame(title);
         frame.setPreferredSize(new Dimension(width , height));
