@@ -24,6 +24,10 @@ public abstract class Collision {
         this.boundsObjectB = objectB.getBounds();
     }
 
+    public boolean isCollided() {
+        return isCollided;
+    }
+
     public void tick(){
        collision();
        actionAfterCollision();
@@ -50,6 +54,8 @@ public abstract class Collision {
         collidedA = null;
         collidedB = null;
     }
+
+
 
     public abstract void actionAfterCollision();
 

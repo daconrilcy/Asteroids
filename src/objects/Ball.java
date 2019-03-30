@@ -6,24 +6,19 @@ import java.awt.*;
 
 public class Ball extends GameObject {
 
-
     public Ball(GameObject player) {
         super(0, 0, ID.ball);
         this.player = player;
-        width = 32;
-        height = 32;
-        velY = 0;
-        velX = 0;
         if (player.getX() > Game.WIDTH/2){
             this.setX(player.getX() - width);
         }else {
             this.setX(player.getX() + player.getWidth());
         }
-        this.setY(player.getY() + player.getHeight()/2-height/2);
-        setBounds();
+        this.setY(player.getY() + player.getHeight()/2f-height/2f);
+        init();
     }
-    public Ball() {
-        super(0, 0, ID.ball);
+
+    private void init(){
         width = 32;
         height = 32;
         velY = 0;
@@ -37,9 +32,9 @@ public class Ball extends GameObject {
         y += velY;
         if (y<1 || y> Game.HEIGHT-40-height){
             velY = -velY;
-        }
-        if (x<1 || x> Game.WIDTH-width-16){
-            velX = -velX;
+            isBound = true;
+        }else {
+            isBound = false;
         }
 
         if (statut == ObjectStatut.stoped && player != null){
@@ -48,8 +43,13 @@ public class Ball extends GameObject {
             }else {
                 this.setX(player.getX() + player.getWidth());
             }
-            this.setY(player.getY() + player.getHeight()/2-height/2);
+            this.setY(player.getY() + player.getHeight()/2f-height/2f);
         }
+
+        if (isBound){
+            velY *=1.1;
+        }
+
 
         updateBounds();
         capturePos();
@@ -77,10 +77,10 @@ public class Ball extends GameObject {
 
     @Override
     protected void setBounds() {
-        setABound((int)(x +width/4), (int)(y+height-height/2) , (int)(width/2) , (int)height/2 ,ID_bounds.bottom);
-        setABound((int)x , (int)y , (int)(width/4) , (int)height , ID_bounds.right);
-        setABound((int)(x+width*3/4), (int)y , (int)(width/4), (int)height , ID_bounds.left);
-        setABound((int)(x+width/4) , (int)y , (int)(width/2) , (int)(height/2) , ID_bounds.top);
+        setABound((int)(x +width/4), (int)(y+height-height/2) , (width/2), height/2 ,ID_bounds.bottom);
+        setABound((int)x , (int)y , (width/4) , height , ID_bounds.right);
+        setABound((int)(x+width*3/4), (int)y , (width/4), height , ID_bounds.left);
+        setABound((int)(x+width/4) , (int)y , (width/2) , (height/2) , ID_bounds.top);
     }
 
     public void start(){

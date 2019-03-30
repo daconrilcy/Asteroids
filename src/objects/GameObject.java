@@ -19,7 +19,7 @@ public abstract class GameObject {
     protected long timerPos;
     protected long lapsCaptPos = 100;
     protected GameObject player;
-
+    public boolean isBound = false;
 
     public float getX() {
         return x;
