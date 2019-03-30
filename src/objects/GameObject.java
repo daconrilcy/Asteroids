@@ -2,30 +2,30 @@ package objects;
 
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public abstract class GameObject {
 
-    protected float x,y;
-    protected float velX, velY;
-    protected ID id;
-    protected int height;
+    float x,y;
+    float velX, velY;
+    private ID id;
+    int height;
     protected int width;
-    public LinkedList<Bound> bounds = new LinkedList<Bound>();
-    protected ObjectStatut statut = ObjectStatut.stoped;
-    protected int nBounds;
-    protected float lastX,lastY, difX, difY;
-    protected long timerPos;
-    protected long lapsCaptPos = 100;
-    protected GameObject player;
+    LinkedList<Bound> bounds = new LinkedList<>();
+    ObjectStatut statut = ObjectStatut.stoped;
+    int nBounds;
+    private float lastY;
+    private float difY;
+    private long timerPos;
+    private long LAPS;
+    GameObject player;
     public boolean isBound = false;
 
     public float getX() {
         return x;
     }
 
-    public void setX(float x) {
+    void setX(float x) {
         this.x = x;
     }
 
@@ -33,7 +33,7 @@ public abstract class GameObject {
         return y;
     }
 
-    public void setY(float y) {
+    void setY(float y) {
         this.y = y;
     }
 
@@ -57,16 +57,8 @@ public abstract class GameObject {
         return id;
     }
 
-    public void setId(ID id) {
-        this.id = id;
-    }
-
     public int getHeight() {
         return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
     }
 
     public int getWidth() {
@@ -81,60 +73,12 @@ public abstract class GameObject {
         return bounds;
     }
 
-    public void setBounds(LinkedList<Bound> bounds) {
-        this.bounds = bounds;
-    }
-
     public ObjectStatut getStatut() {
         return statut;
     }
 
-    public void setStatut(ObjectStatut statut) {
-        this.statut = statut;
-    }
-
-    public int getnBounds() {
-        return nBounds;
-    }
-
-    public void setnBounds(int nBounds) {
-        this.nBounds = nBounds;
-    }
-
-    public float getLastX() {
-        return lastX;
-    }
-
-    public void setLastX(float lastX) {
-        this.lastX = lastX;
-    }
-
-    public float getLastY() {
-        return lastY;
-    }
-
-    public void setLastY(float lastY) {
-        this.lastY = lastY;
-    }
-
-    public float getDifX() {
-        return difX;
-    }
-
-    public void setDifX(float difX) {
-        this.difX = difX;
-    }
-
     public float getDifY() {
         return difY;
-    }
-
-    public void setDifY(float difY) {
-        this.difY = difY;
-    }
-
-    public GameObject getPlayer() {
-        return player;
     }
 
     public void setPlayer(GameObject player) {
@@ -144,10 +88,10 @@ public abstract class GameObject {
     public GameObject(float x, float y , ID id){
         this.x = x;
         this.y = y;
-        this.lastX=x;
         this.lastY=y;
         this.id = id;
         timerPos = System.currentTimeMillis();
+        LAPS = 100;
     }
 
     public abstract void tick();
@@ -157,16 +101,14 @@ public abstract class GameObject {
     protected abstract void setBounds();
     protected abstract void updateBounds();
     public abstract void resetPosVit();
-    protected void capturePos(){
-        if (System.currentTimeMillis()-timerPos > lapsCaptPos){
-            difX = x-lastX;
+    void capturePos(){
+        if (System.currentTimeMillis()-timerPos > LAPS){
             difY = y-lastY;
             timerPos = System.currentTimeMillis();
-            lastX = x;
             lastY = y;
         }
     }
-    protected void setABound(int x , int y , int width , int height , ID_bounds id){
+    void setABound(int x , int y , int width , int height , ID_bounds id){
         Bound bound = new Bound(x,y, width , height , id);
         this.bounds.add(bound);
         nBounds++;

@@ -1,7 +1,6 @@
 package Joystick;
 
 import objects.GameObject;
-import objects.ID;
 import objects.ObjectStatut;
 
 public class JoyClickBall extends JoystickMove {

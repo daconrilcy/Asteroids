@@ -8,18 +8,11 @@ import java.util.ArrayList;
 
 public class GameDrawingPanel extends JComponent {
 
-    public ArrayList<Rock> rocks = new ArrayList<Rock>();
-    static int nRocks = 50;
+    private ArrayList<Rock> rocks = new ArrayList<>();
 
-    int[] polyXArray = Rock.sPolyXArray;
-    int[] polyYArray = Rock.sPolyYArray;
-
-    int width = Board.width;
-    int heigth = Board.heigth;
-
-    public GameDrawingPanel(){
-
-        for (int i = 0 ; i < nRocks ; i++ ){
+    GameDrawingPanel(){
+        int NROCKS = 50;
+        for (int i = 0; i < NROCKS; i++ ){
 
             int randormStartXPos = (int)(Math.random()*(Board.width-40)+5);
             int randormStartYPos = (int)(Math.random()*(Board.heigth-40)+1);

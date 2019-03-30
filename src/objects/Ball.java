@@ -147,6 +147,6 @@ public class Ball extends GameObject {
      }
         setVelX(0);
         setVelY(0);
-        setStatut(ObjectStatut.stoped);
+        this.statut = ObjectStatut.stoped;
     }
 }

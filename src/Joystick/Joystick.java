@@ -5,26 +5,30 @@ import net.java.games.input.Controller;
 import net.java.games.input.ControllerEnvironment;
 
 public class Joystick {
-    private Controller[] controllers;
     private Controller controller;
-    private Component[] components;
-    private Component component;
     private Component RX, RY, AX, AY, AZ;
     private Component b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10;
-    private int RXnullA, RXnullB, RXMax , RXMin , RXMid , RXLong;
-    private int AXnullA, AXnullB, AXMax , AXMin , AXMid , AXLong;
-    private int AYnullA, AYnullB, AYMax , AYMin , AYMid , AYLong;
+    private int RXnullA;
+    private int RXnullB;
+    private int RXMid;
+    private int AXnullA;
+    private int AXnullB;
+    private int AXMid;
+    private int AXLong;
+    private int AYnullA;
+    private int AYnullB;
+    private int AYMid;
+    private int AYLong;
 
     public Joystick(){
         init();
     }
 
     private void init(){
-        controllers = ControllerEnvironment.getDefaultEnvironment().getControllers();
+        Controller[] controllers = ControllerEnvironment.getDefaultEnvironment().getControllers();
         for (Controller c : controllers){
             if (c.getType() == Controller.Type.GAMEPAD){
                 controller = c;
-                components = controller.getComponents();
                 RX = controller.getComponent(Component.Identifier.Axis.RX);
                 RY = controller.getComponent(Component.Identifier.Axis.RY);
                 AX = controller.getComponent(Component.Identifier.Axis.X);
@@ -33,27 +37,35 @@ public class Joystick {
                 b0 = controller.getComponent(Component.Identifier.Button._0);
                 b1 = controller.getComponent(Component.Identifier.Button._1);
                 b2 = controller.getComponent(Component.Identifier.Button._2);
+                b3 = controller.getComponent(Component.Identifier.Button._3);
+                b4 = controller.getComponent(Component.Identifier.Button._4);
+                b5 = controller.getComponent(Component.Identifier.Button._5);
+                b6 = controller.getComponent(Component.Identifier.Button._6);
+                b7 = controller.getComponent(Component.Identifier.Button._7);
+                b8 = controller.getComponent(Component.Identifier.Button._8);
+                b9 = controller.getComponent(Component.Identifier.Button._9);
+                b10 = controller.getComponent(Component.Identifier.Button._10);
             }
         }
 
         RXnullA = -4;
         RXnullB = 4;
-        RXMax = 100;
-        RXMin = -99;
-        RXMid = (RXMax+RXMin)/2;
-        RXLong = RXMax-RXMin;
+        int RXMax = 100;
+        int RXMin = -99;
+        RXMid = (RXMax + RXMin)/2;
+        int RXLong = RXMax - RXMin;
         AXnullA = -3;
         AXnullB = 4;
-        AXMax = 100;
-        AXMin = -99;
-        AXMid = (AXMax+AXMin)/2;
-        AXLong = AXMax-AXMin;
+        int AXMax = 100;
+        int AXMin = -99;
+        AXMid = (AXMax + AXMin)/2;
+        AXLong = AXMax - AXMin;
         AYnullA = -1;
         AYnullB = 1;
-        AYMax = 99;
-        AYMin = -100;
-        AYMid = (AXMax+AXMin)/2;
-        AYLong = AXMax-AXMin;
+        int AYMax = 99;
+        int AYMin = -100;
+        AYMid = (AXMax + AXMin)/2;
+        AYLong = AXMax - AXMin;
 
     }
 
@@ -61,22 +73,8 @@ public class Joystick {
         controller.poll();
     }
 
-    public int getRX() {
-        if (controller == null ) return 0;
-        if (RX == null) return 0;
-        int val= (int)(RX.getPollData()*100);
-        if (val >= RXnullA && val <= RXnullB){
-            return 0;
-        }
-        return  (int)(RX.getPollData()*100-RXMid);
-    }
 
-    public int getRY(){
-        if (controller == null ) return 0;
-        if (RY == null) return 0;
-        return  (int)(RY.getPollData()*100);
-    }
-    public int getAX(){
+    int getAX(){
         if (controller == null ) return 0;
         if (AX == null) return 0;
         int val = (int)(AX.getPollData()*100-AXMid);
@@ -84,7 +82,7 @@ public class Joystick {
         val = (int)((AX.getPollData()*100-AXMid)/AXLong*200);
         return val;
     }
-    public int getAY(){
+    int getAY(){
         if (controller == null ) return 0;
         if (AY == null) return 0;
         int val = (int)(AX.getPollData()*100-AXMid);
@@ -97,7 +95,7 @@ public class Joystick {
         return b0;
     }
 
-    public Component getB1() {
+    Component getB1() {
         return b1;
     }
 
@@ -143,7 +141,7 @@ public class Joystick {
         return  (int)(AZ.getPollData()*100);
     }
 
-    public double isButton1(){
+    double isButton1(){
         if (controller == null ) return 0;
         return b1.getPollData();
     }

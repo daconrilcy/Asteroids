@@ -9,11 +9,10 @@ public class Board extends JFrame {
 
     public static int width = 1000;
     public static int heigth = 1000;
-    public Dimension dimension;
 
     public Board (){
         this.setSize(width,heigth);
-        this.dimension = new Dimension(width , heigth+20);
+        Dimension dimension = new Dimension(width, heigth + 20);
         this.setMinimumSize(dimension);
         this.setMaximumSize(dimension);
         this.setResizable(false);

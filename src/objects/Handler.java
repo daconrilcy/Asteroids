@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 public class Handler {
 
-    public LinkedList<GameObject> objects = new LinkedList<GameObject>();
+    public LinkedList<GameObject> objects = new LinkedList<>();
 
     public void tick(){
         for(GameObject gameObject : objects){
@@ -23,9 +23,5 @@ public class Handler {
 
     public void addObject(GameObject gameObject){
         objects.add(gameObject);
-    }
-
-    public void removeObject(GameObject gameObject){
-        objects.remove(gameObject);
     }
 }

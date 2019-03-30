@@ -3,21 +3,18 @@ package objects.collision;
 import objects.Bound;
 import objects.GameObject;
 import org.jetbrains.annotations.NotNull;
-
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public abstract class Collision {
 
-    protected GameObject objectA;
-    protected GameObject objectB;
-    protected LinkedList<Bound> boundsObjectA;
-    protected LinkedList<Bound> boundsObjectB;
-    protected boolean isCollided = false;
-    protected Bound collidedA, collidedB;
+     private GameObject objectA;
+     private GameObject objectB;
+     private LinkedList<Bound> boundsObjectA;
+     private LinkedList<Bound> boundsObjectB;
+     private boolean isCollided = false;
+     private Bound collidedB;
 
-    public Collision(@NotNull GameObject objectA , @NotNull GameObject objectB){
+    Collision(@NotNull GameObject objectA, @NotNull GameObject objectB){
         this.objectA = objectA;
         this.objectB = objectB;
         this.boundsObjectA = objectA.getBounds();
@@ -33,17 +30,17 @@ public abstract class Collision {
        actionAfterCollision();
     }
 
-    public void collision() {
+    private void collision() {
         if (objectA == null) return;
         if (objectB == null) return;
-        for (int i=0 ; i < boundsObjectA.size(); i++){
-            if (boundsObjectA.get(i) != null) {
-                for (int t=0 ; t < boundsObjectB.size(); t++){
-                    if (boundsObjectB.get(t) != null) {
-                        if (boundsObjectA.get(i).getRectangle().intersects(boundsObjectB.get(t).getRectangle())){
+
+        for (Bound bound : boundsObjectA) {
+            if (bound != null) {
+                for (Bound bound1 : boundsObjectB) {
+                    if (bound1 != null) {
+                        if (bound.getRectangle().intersects(bound1.getRectangle())) {
                             isCollided = true;
-                            collidedA = boundsObjectA.get(i);
-                            collidedB = boundsObjectB.get(t);
+                            collidedB = bound1;
                             return;
                         }
                     }
@@ -51,12 +48,24 @@ public abstract class Collision {
             }
         }
         isCollided = false;
-        collidedA = null;
         collidedB = null;
     }
 
 
 
-    public abstract void actionAfterCollision();
+    private void actionAfterCollision(){
+            if (!isCollided) return;
+            switch (collidedB.getID()){
+                case bottom: case top:
+                    objectB.setVelY(-objectB.getVelY());
+                    objectB.setVelX(objectB.getVelX()*2f);
+                    break;
+                case right: case left:
+                    objectB.setVelX(-objectB.getVelX());
+                    float velY = objectB.getVelY()-objectA.getDifY()/10;
+                    objectB.setVelY(velY);
+                    break;
+            }
+    }
 
 }

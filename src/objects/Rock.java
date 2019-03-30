@@ -6,27 +6,23 @@ import java.awt.*;
 
 public class Rock extends Polygon {
 
-    int uLeftXPos, uLeftYPos;
-    int xDirection = 1;
-    int yDirection = 1;
+    private int xDirection;
+    private int yDirection;
 
-    int width = Board.width;
-    int height = Board.heigth;
+    private int width = Board.width;
+    private int height = Board.heigth;
 
-    int[] polyXArray, polyYArray;
+    private static int[] sPolyXArray = {10,17,26,34,27,36,26,14,8,1,5,1,10};
+    private static int[] sPolyYArray = {0,5,1,8,13,20,31,28,31,22,16,7,0};
 
-    public static int[] sPolyXArray = {10,17,26,34,27,36,26,14,8,1,5,1,10};
-    public static int[] sPolyYArray = {0,5,1,8,13,20,31,28,31,22,16,7,0};
-
-    public Rock (int[] polyXArray , int[] polyYArray , int pointsInPoly , int randomStartXPos , int randomStartYPos ){
+    public Rock (int[] polyXArray , int[] polyYArray , int pointsInPoly , int xpoints, int ypoints ){
 
         super(polyXArray , polyYArray , pointsInPoly);
+        super.xpoints[0] = xpoints;
+        super.ypoints[0] = ypoints;
 
         this.xDirection = (int)(Math.random()*4+1);
         this.yDirection = (int)(Math.random()*4+1);
-
-        this.uLeftXPos = randomStartXPos;
-        this.uLeftYPos = randomStartYPos;
     }
 
     public void move(){
@@ -48,7 +44,7 @@ public class Rock extends Polygon {
     }
 
     public static int[] getsPolyXArray(int randormXStartPos){
-        int[] xTempPoly = (int[])sPolyXArray.clone();
+        int[] xTempPoly = sPolyXArray.clone();
         for (int i = 0 ; i < xTempPoly.length ; i++){
             xTempPoly[i] += randormXStartPos;
         }
@@ -57,7 +53,7 @@ public class Rock extends Polygon {
     }
 
     public static int[] getsPolyYArray(int randormYStartPos){
-        int[] yTempPoly = (int[])sPolyYArray.clone();
+        int[] yTempPoly = sPolyYArray.clone();
         for (int i = 0 ; i < yTempPoly.length ; i++){
             yTempPoly[i] += randormYStartPos;
         }

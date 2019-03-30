@@ -2,21 +2,14 @@ package board;
 
 public class RepaintTheBoard implements Runnable {
 
-    Board board;
-    private Thread thread;
+    private Board board;
 
-
-
-    public RepaintTheBoard(Board board){
+    RepaintTheBoard(Board board){
         this.board = board;
     }
 
     @Override
     public void run() {
         this.board.repaint();
-    }
-
-    public synchronized void start(){
-
     }
 }

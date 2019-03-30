@@ -58,17 +58,16 @@ public class Competitor extends GameObject {
 
     @Override
     protected void setBounds(){
-        setABound((int)(x +width/4), (int)(y+height-height/2) , (int)(width/2) , (int)(height/2) ,ID_bounds.bottom);
-        setABound((int)x , (int)y , (int)(width/4) , (int)height , ID_bounds.right);
-        setABound((int)(x+width*3/4), (int)y , (int)(width/4), (int)height , ID_bounds.left);
-        setABound((int)(x+width/4) , (int)y , (int)(width/2) , (int)(height/2) , ID_bounds.top);
+        setABound((int)(x +width/4), (int)(y+height-height/2) , (width/2) , (height/2) ,ID_bounds.bottom);
+        setABound((int)x , (int)y , (width/4) , height , ID_bounds.right);
+        setABound((int)(x+width*3/4), (int)y , (width/4), height , ID_bounds.left);
+        setABound((int)(x+width/4) , (int)y , (width/2) , (height/2) , ID_bounds.top);
     }
 
     @Override
     protected void updateBounds() {
-        if (bounds.get(0) != null){
-            bounds.get(0).updatePosRectangle((int)(x +width/4), (int)(y+height-height/2));
-        }
+        if (bounds.get(0) != null)
+            bounds.get(0).updatePosRectangle((int) (x + width / 4), (int) (y + height - height / 2));
         if (bounds.get(1) != null){
             bounds.get(1).updatePosRectangle((int)x , (int)y );
         }
@@ -83,13 +82,8 @@ public class Competitor extends GameObject {
     @Override
     public void resetPosVit() {
         setVelX(0);
-        setVelY(Game.HEIGHT/2-64);
+        setVelY(Game.HEIGHT/2f-64);
         setX(0);
         setY(0);
     }
-    public void resetPosVitDroite(int gd) {
-        resetPosVit();
-        setX(Game.WIDTH-width);
-    }
-
 }

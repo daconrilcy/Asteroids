@@ -1,7 +1,6 @@
 package Joystick;
 
 import objects.GameObject;
-import objects.ID;
 
 public class JoyStickPlayer extends JoystickMove {
 

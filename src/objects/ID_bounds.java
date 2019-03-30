@@ -6,5 +6,4 @@ public enum  ID_bounds {
     top(),
     left(),
     right(),
-    global();
 }
